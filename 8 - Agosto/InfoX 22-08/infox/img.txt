@@ -1,0 +1,4 @@
+JXImagePanel imagePanel = new JXImagePanel();
+ImageIcon imagem = new ImageIcon("minhaImagem.png");               
+imagePanel.setImage(imagem.getImage());  
+imagePanel.setStyle(JXImagePanel.Style.SCALED);

@@ -1,0 +1,43 @@
+﻿  private void adicionar() {
+//A linha abaixo serve para criar a instrução sql, pode ser insert, update,select e delete.
+        String sql = "insert into cliente(nome,telefone,email) values(?,?,?)";
+        
+	try {
+
+/*A linha abaixo serve para receber a instrução SQL e definir de quais
+caixas de texto serão cadastradas as informações.
+*/
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1,txtnome.getText());
+            pst.setString(2,txttelefone.getText());
+            pst.setString(3,txtemail.getText());
+
+            
+/*
+A linha abaixo atualiza a tabela cliente com os dados do formulário
+
+e armazena 0 ou 1 na variável adicionado, onde 0 não foi cadastrado e 1 foi cadastrado
+*/
+          
+                int adicionado = pst.executeUpdate();
+
+/*
+A linha abaixo verifica se os dados foram inseridos e mostra uma mensagem de sucesso ou falha
+Também limpa todas as caixas de texto e coloca o cursor na 1ª caixa de texto.
+*/
+  
+                if (adicionado > 0) {
+                    JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso");
+                    txtnome.setText(null);
+                    txttelefone.setText(null);
+                    txtemail.setText(null);
+                   txtnome.grabFocus();
+                } 
+     
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    
+	}//fim método adicionar
+
+                   

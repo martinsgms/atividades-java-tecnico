@@ -1,0 +1,4 @@
+1- instalar o jasper report
+
+2- netbeans > ferramentas > plugins > obtidos por download >
+pasta do jasper report > selecionar todos > instalar > reiniciar ide.

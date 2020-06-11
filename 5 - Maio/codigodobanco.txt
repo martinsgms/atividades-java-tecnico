@@ -1,0 +1,45 @@
+create database exemplo;
+create table autor(
+codautor int primary key auto_increment,
+nome varchar (50),
+sobrenome varchar (50)
+);
+create table editora(
+codeditora int primary key auto_increment,
+editora varchar (50),
+email varchar (50),
+telefone varchar (20)
+);
+create table livro(
+codlivro int primary key auto_increment, 
+titulo varchar (50),
+edicao varchar (3),
+quantidade int,
+codautor int,
+codeditora int,
+constraint fk_codautor foreign key (codautor) references autor (codautor),
+constraint fk_codeditora foreign key (codeditora) references editora (codeditora)
+);
+
+insert into autor (codautor,nome,sobrenome) values (1,'Agatha','Christie');
+insert into autor (codautor,nome,sobrenome) values (2,'Augusto','Cury');
+insert into autor (codautor,nome,sobrenome) values (3,'Clarice','Lispector');
+insert into autor (codautor,nome,sobrenome) values (4,'Jojo','Moyes');
+insert into autor (codautor,nome,sobrenome) values (5,'Nicholas','Sparks');
+
+insert into editora (codeditora,editora,email,telefone) values (1,'Circulo do Livro','circulodolivro@gmail.com','36047584');
+insert into editora (codeditora,editora,email,telefone) values (2,'Sextante','sextante@gmail.com','34102387');
+insert into editora (codeditora,editora,email,telefone) values (3,'Rocco','rocco@gmail.com','36416985');
+insert into editora (codeditora,editora,email,telefone) values (4,'Intrínseca','intrinseca@gmail.com','36554578');
+insert into editora (codeditora,editora,email,telefone) values (5,'Arqueiro','arqueiro@gmail.com','36552353');
+
+insert into livro (titulo,edicao,quantidade,codautor,codeditora) values ('Assassinato no Expresso do Oriente','2ª',5,1,1);
+insert into livro (titulo,edicao,quantidade,codautor,codeditora) values ('Armadilhas da Mente','1ª',7,2,2);
+insert into livro (titulo,edicao,quantidade,codautor,codeditora) values ('A Hora da Estrela','2ª',2,3,3);
+insert into livro (titulo,edicao,quantidade,codautor,codeditora) values ('A Garota que Você Deixou para Trás','1ª',8,4,4);
+insert into livro (titulo,edicao,quantidade,codautor,codeditora) values ('No Seu Olhar','3ª',6,5,5);
+select livro.titulo,livro.edicao,livro.quantidade,autor.nome,autor.sobrenome,editora.editora from livro
+join autor 
+on livro.codautor=autor.codautor
+join editora
+on livro.codeditora=editora.codeditora;
